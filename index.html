@@ -551,18 +551,46 @@
         <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
         <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
       </div>
-      <p style="color: #666666;">&copy 2018</p>
+      <p style="color: #666666;">&copy 2020</p>
     </div>
     <div class="footer-device">
     <p style="font-family: 'Ubuntu', sans-serif;">
-        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        <span style="color: #b9b9b9;">这是 <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">吕世昊的个人博客</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Lvshihao</a>&<a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Tianjingjing</a>, Powered by lvshihao, Hosted by Coding Pages</a>
         </span>
       </p>
     </div>
   </div><!-- .site-info -->
 </footer>
 
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>
 
+  var now = new Date();
+
+  function createtime() {
+
+    var grt= new Date("03/08/2020 16:44:00");//此处修改你的建站时间或者网站上线时间
+
+    now.setTime(now.getTime()+250);
+
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+
+  }
+
+  setInterval("createtime()",250);</script>
 
 <!-- <script src="/js/tocbot.js"></script> -->
 <script type="text/javascript" src="/js/lib.min.js"></script>
@@ -587,6 +615,7 @@ if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 /* ]]> */
 
 </script>
+
 <script>
 $(document).ready(function() {
   if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
@@ -910,7 +939,6 @@ $(document).ready(function() {
   });
 </script>
 </body>
-<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
 <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
