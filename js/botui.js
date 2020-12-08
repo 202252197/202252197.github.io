@@ -26,7 +26,7 @@ function bot_ui_ini() {
     }).then(function () {
         botui.message.add({
             delay: 1100,
-            content: "这里是 Mashiro"
+            content: "这里是 Lvshihao"
         }).then(function () {
             botui.message.add({
                 delay: 1100,
@@ -90,8 +90,8 @@ function bot_ui_ini() {
                                     botui.action.button({
                                         delay: 1100,
                                         action: [{
-                                            text: "为什么叫Mashiro呢？ 🤔",
-                                            value: "why-mashiro"
+                                            text: "为什么叫Lvshihao呢？ 🤔",
+                                            value: "why-lvshihao"
                                         }]
                                     }).then(function (a) {
                                         thirdpart()
@@ -106,7 +106,7 @@ function bot_ui_ini() {
         thirdpart = function () {
             botui.message.add({
                 delay: 1E3,
-                content: "Mashiro以及站名都来自一部动画，因为和主角有一样的爱好~ 如果有兴趣可以找找首页上的视频~"
+                content: "Lvshihao以及站名都来自一部动画，因为和主角有一样的爱好~ 如果有兴趣可以找找首页上的视频~"
             }).then(function () {
                 botui.action.button({
                     delay: 1500,
