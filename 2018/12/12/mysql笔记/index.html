@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">文章标题 | 吕世昊的博客</title>
+  <title itemprop="name">mysql笔记 | 吕世昊的博客</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -36,8 +36,8 @@
   mashiro_option.site_name = "Mr.LVSHIHAO";
   mashiro_option.author_name = "LVSHIHAO";
   mashiro_option.site_url = "https://lvshihao.top";
-  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
-  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.v_appId = "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI";
+  mashiro_option.v_appKey = "BX5svNjhIIaheIbwruaqawzg";
   mashiro_option.mathjax = "0";
   mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
   mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
@@ -272,9 +272,16 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/tags/悦读/">
+                        <a href="/tags/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/">
                           <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                          书单
+                          分类
                         </a>
                       </li>
                     
@@ -289,13 +296,6 @@
                         <a href="/music/">
                           <i class="fa fa-headphones" aria-hidden="true"></i>
                           歌单
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/tags/图集/">
-                          <i class="fa fa-photo" aria-hidden="true"></i>
-                          图集
                         </a>
                       </li>
                     
@@ -401,25 +401,49 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2019/02/wallhaven-672007-1-1024x576.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&amp;fm=26&amp;gp=0.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      文章标题</h1>
+      mysql笔记</h1>
       <p class="entry-census">
         <span>
-          <a href="hojun.cn">
-            <img src="作者头像链接">
+          <a href="lvshihao.top">
+            <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg">
           </a>
         </span>
         <span>
-          <a href="hojun.cn">作者名</a>
+          <a href="lvshihao.top">吕世昊</a>
         </span>
         <span class="bull">
         ·</span>
         2018-12-12<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
+      <!-- 开始添加字数统计-->
+        
+          	<div style="margin-top:10px;">
+	    <span class="post-time">
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-keyboard-o"></i>
+	        <span class="post-meta-item-text">  字数统计: </span>
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+	        <span class="post-count">15.3k字</span>
+	      </span>
+	    </span>
+	
+	    <span class="post-time">
+	      &nbsp; | &nbsp;
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-hourglass-half"></i>
+	        <span class="post-meta-item-text">  阅读时长: </span>
+	        <span class="post-count">64分</span>
+	      </span>
+	    </span>
+	</div>
+
+        
+        <!-- 添加完成 -->
     </header>
   </div>
 
@@ -1702,6 +1726,8 @@ select a.s_id,a.s_name,count(b.c_id) as count_course,sum(b.s_score) as sum_score
             </div>
           </div>
         </div>
+
+
         <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
         <footer class="post-footer">
           <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
@@ -1726,8 +1752,8 @@ select a.s_id,a.s_name,count(b.c_id) as count_course,sum(b.s_score) as sum_score
       var valine = new Valine();
       valine.init({
         el: '#vcomments',
-        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
-        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        appId: "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI",
+        appKey: "BX5svNjhIIaheIbwruaqawzg",
         path: window.location.pathname,
         placeholder: "你是我一生只会遇见一次的惊喜 ..."
       })
@@ -1736,11 +1762,11 @@ select a.s_id,a.s_name,count(b.c_id) as count_course,sum(b.s_score) as sum_score
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="hojun.cn" class="profile gravatar"><img src="作者头像链接" itemprop="image" alt="作者名" height="70" width="70"></a>
+          <a href="lvshihao.top" class="profile gravatar"><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg" itemprop="image" alt="吕世昊" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="hojun.cn" itemprop="url" rel="author">作者名</a>
+            <a href="lvshihao.top" itemprop="url" rel="author">吕世昊</a>
             </h3>
           </div>
         </div>
@@ -2104,9 +2130,16 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/tags/悦读/">
+                <a href="/tags/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
                   <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                  书单
+                  分类
                 </a>
               </li>
             
@@ -2121,13 +2154,6 @@ $(document).ready(function() {
                 <a href="/music/">
                   <i class="fa fa-headphones" aria-hidden="true"></i>
                   歌单
-                </a>
-              </li>
-            
-              <li>
-                <a href="/tags/图集/">
-                  <i class="fa fa-photo" aria-hidden="true"></i>
-                  图集
                 </a>
               </li>
             
