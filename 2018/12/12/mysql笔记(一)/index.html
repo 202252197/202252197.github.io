@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">mysql笔(一) | 吕世昊的博客</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Mr.LVSHIHAO";
+  mashiro_option.author_name = "LVSHIHAO";
+  mashiro_option.site_url = "https://lvshihao.top";
+  mashiro_option.v_appId = "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI";
+  mashiro_option.v_appKey = "BX5svNjhIIaheIbwruaqawzg";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://lvshihao.top">
+          <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>海底月是天上月,眼前人是心上人。向来心是看客心,奈何人是剧中人。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/202252197" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5914005183?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=513260629" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/lu-shi-hao-75" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:202252197@qq.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/Screenshot_20201205_111803.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/Screenshot_20201205_111803.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Mr.</span>
+            <span class="shironeko">LVSHIHAO</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          类别
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&amp;fm=26&amp;gp=0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      mysql笔(一)</h1>
+      <p class="entry-census">
+        <span>
+          <a href="lvshihao.top">
+            <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="lvshihao.top">吕世昊</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2018-12-12<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+      <!-- 开始添加字数统计-->
+        
+          	<div style="margin-top:10px;">
+	    <span class="post-time">
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-keyboard-o"></i>
+	        <span class="post-meta-item-text">  字数统计: </span>
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+	        <span class="post-count">6.1k字</span>
+	      </span>
+	    </span>
+	
+	    <span class="post-time">
+	      &nbsp; | &nbsp;
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-hourglass-half"></i>
+	        <span class="post-meta-item-text">  阅读时长: </span>
+	        <span class="post-count">26分</span>
+	      </span>
+	    </span>
+	</div>
+
+        
+        <!-- 添加完成 -->
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="数据库的好处"><a href="#数据库的好处" class="headerlink" title="数据库的好处"></a>数据库的好处</h2><pre><code>1.可以持久化数据到本地,一般存放在C盘中的ProgramData的mysql文件里
+2.结构化查询
+</code></pre><h2 id="数据库的常见概念"><a href="#数据库的常见概念" class="headerlink" title="数据库的常见概念"></a>数据库的常见概念</h2><pre><code>1.DB：数据库,存储数据容器
+2.DBMS:数据库管理系统,又称之为数据库软件或数据库产品,用于创建或管理DB
+3.SQL：结构化语言,用于和数据库通信的语言,不是某个数据库软件特有的,而是几乎所有的主流数据库软件统用的语言
+</code></pre><h2 id="数据库存储数据的特点"><a href="#数据库存储数据的特点" class="headerlink" title="数据库存储数据的特点"></a>数据库存储数据的特点</h2><pre><code>1.数据存放到表中,然后表再放到库中
+2.一个库中可以有多张表,每张表具有唯一的表名用来标识自己
+3.表中有一个或多个列,列又称之为&quot;字段&quot;，相当于java中&quot;属性&quot;
+4.表中的每一行数据,相当于java中&quot;对象&quot;
+</code></pre><h2 id="SQL简介"><a href="#SQL简介" class="headerlink" title="SQL简介"></a>SQL简介</h2><h3 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h3><pre><code>Structured Query Language简称SQL,结构化查询语言,数据库管理系统通过SQL语言来管理数据库中的数据
+</code></pre><h3 id="SQL语言的组成部分"><a href="#SQL语言的组成部分" class="headerlink" title="SQL语言的组成部分"></a>SQL语言的组成部分</h3><pre><code class="mysql">DDL(Data Defination Language):数据定义语言,主要用于定义数据库、表、视图、索引和触发器等。像DROP,CREATE,ALTER等语句 
+DML(Data Manipulation Language):主要包括对数据的增删改。INSERT插入数据、UPDATE更新数据、DELETE删除数据。
+DQL(Data Query Language):数据检索语句,用来从表中获得数据,确定数据怎样在应用程序中给出,像SELECT查询数据。
+DCL(Data Control Language):数据控制语言,主要用于控制用户的访问权限。像GRANT, REVOKE, COMMIT, ROLLBACK等语句。
+</code></pre>
+<h2 id="Mysql配置文件"><a href="#Mysql配置文件" class="headerlink" title="Mysql配置文件"></a>Mysql配置文件</h2><pre><code class="mysql">进入mysql安装目录找到my.ini在里面可以
+配置端口port
+配置更改编码charcter-set-server=utf8
+配置引擎default-storage-engine=innodb
+等等
+</code></pre>
+<h2 id="Mysql卸载"><a href="#Mysql卸载" class="headerlink" title="Mysql卸载"></a>Mysql卸载</h2><pre><code>1.找到电脑管家卸载mysql
+2.找到之前安装的mysql目录位置,将目录删除掉
+3.找到C盘中的ProgramData中在找到mysql,将此文件夹删除
+4.如果再不行就去清理mysql注册表了
+</code></pre><h2 id="MySQL命令提示符"><a href="#MySQL命令提示符" class="headerlink" title="MySQL命令提示符"></a>MySQL命令提示符</h2><pre><code class="mysql">mysql -uroot -plvshihao --prompt 提示符    ||连接客户端时通过参数指定
+prompt 提示符 \D：完整的日期  \d:当前数据库  \h:服务器名称   \u:当前用户名 ||连接上客户端后,通过prompt命令修改
+</code></pre>
+<h2 id="基本入门语句"><a href="#基本入门语句" class="headerlink" title="基本入门语句"></a>基本入门语句</h2><pre><code class="mysql">1.连接数据库命令
+        Mysql -h IP地址 -P 端口号 -u 用户名 -p 密码 -D 打开指定数据库 --prompt=name设置命令提示符 --delimiter=name指定分割符 -V输出版本信息并且退出;
+2.显示MySQL中所有的数据库
+        Show {DATABASES|SCHEMAS};
+3.进入数据库
+        Use 数据库名;
+4.显示数据库中所有的表
+        show tables;
+5.创建数据库
+        create database [IF NOT EXISTS] 数据库名 [charset 字符集];
+        例如:create database 数据库名 charset utf8;
+6.删除数据库
+        drop database [IF EXISTS] 数据库名;
+7.创建简单表
+        create table [IF NOT EXISTS] 表名(id int,name varchar(10) COMMENT &#39;我是注释&#39;)engine myisam charset utf8;
+        //engine是指表引擎和性能特点相关。charset是指表的字符编码
+        完整性约束条件（
+        PRIMARY KEY主键，
+        AUTO_INCREMENT自增长,
+        FOREIGN KEY外键,
+        NOT NULL非空,
+        UNIQUE KEY唯一,
+        DEFAULT默认值,
+        UNSIGNED无符号字段[代表不能出现负数],
+        ZEROFILL达不到显示长度的话缺省补0[本身就包含UNSIGNED]
+        ）
+8.删除表
+        drop table [if exists] 表名[,表名];
+9.清空表数据
+        truncate 表名;
+10.查看表结构
+        desc 表名;
+        describe 表名;
+        show columns from 表名;
+11.退出客户端
+        exit quit \q Ctrl+c(5.6中不可以)
+12.查看字符集
+        SHOW VARIABLES LIKE &quot;%char%&quot;；
+13.修改分隔符
+        DELIMITER 分隔符名
+14.开启输出日志
+        \T E:\xxx.txt(从开启输出日志的这个一刻起,以后输入的命令都会输出到此文本中)
+15.取消此行命令
+        show databaswaa\c(\c代表不执行此行命令)
+16.查看上一次的警告
+        show WARNINGS;
+17.查看指定数据库的定义
+        show CREATE {DATABASE|SCHEMA} 数据库名称
+18.查看帮助
+        help CREATE DATABASE;(查看创建表的语句)
+        ? bigint;(查看数据类型)
+        [?和help是一样的效果]
+19.显示mysql支持的存储引擎
+        show engines;
+20.以行的形式查看
+        show engines\G;
+21.查看显示支持的存储引擎信息
+        show variables like &#39;have%&#39;;
+22.查看默认的存储引擎
+        show variables like &#39;storage_engine&#39;;
+23.创建枚举类型的字段
+        create table if not exists test(sex ENUM(&quot;男&quot;,&quot;女&quot;,&quot;保密&quot;))engine=innodb charset=utf8;
+45.插入枚举类型的值
+        1.insert test values(1);【可选值开始为1】
+        2.insert test values(&quot;男&quot;);
+25.创建集合类型的字段
+        create table if not exists test(fav SET(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;))ENGINE=INNODB CHARSET=utf8;
+26.插入集合类型的值
+        1.insert test values(&quot;A,B,C&quot;);数值之间用,号隔开
+        2.insert test values(15);按照1，2，4，8的顺序进行设置,15相当于1+2+4+8=15也就是前4个值
+27.查看指定表的定义
+        show CREATE TABLE 表名称
+28.创建普通主键（加速查询 + 列值唯一（不可以有null））
+        create table if not exists test(id int PRIMARY KEY,username VARCHAR(20))engine innodb charset utf8;
+29.创建复合主键(多列值组成一个索引，专门用于组合搜索,多个列合起来的值不能重复,单列重复没有事)
+        create table if not exists test(id int,username VARCHAR(20),PRIMARY KEY (id,username))engine innodb charset utf8;
+        可以简写将 PRIMARY KEY 简写成 KEY
+30.创建自增长约束字段(注意:自增长字段要求必须是key,但是key字段不需要要求是自增长)
+        create table if not exists test(id int KEY auto_increment,username VARCHAR (20))engine innodb charset utf8;
+31.创建非空字段约束(Not NULL)
+        CREATE TABLE IF NOT EXISTS test14(id INT UNSIGNED KEY AUTO_INCREMENT,user
+name VARCHAR(20) NOT NULL,password CHAR(32) NOT NULL,age TINYINT UNSIGNED)engine
+ innodb charset utf8;
+32.创建默认值约束字段
+        create table if not exists test15(id int UNSIGNED KEY AUTO_INCREMENT,user
+name VARCHAR(20) NOT NULL,password CHAR(32) NOT NULL,age TINYINT UNSIGNED DEFAUL
+T 18,addr VARCHAR(50) NOT NULL DEFAULT &#39;beijing&#39;,sex ENUM(&#39;男&#39;,&#39;女&#39;,&#39;保密&#39;)NOT N
+ULL)engine innodb charset utf8;
+        插入值: INSERT test15 values(DEFAULT,&quot;202252197&quot;,&quot;lvshihao&quot;,DEFAULT,&quot;henan&quot;,&quot;男&quot;);
+33.创建唯一约束字段
+        CREATE TABLE IF NOT EXISTS test(username VARCHAR(20) NOT NULL UNIQUE KEY DEFAULT &quot;202252197&quot;)engine innodb charset utf8;
+34.完整的建表语句
+    CREATE TABLE [IF NOT EXISTS] tab_name(字段名称 字段类型 [UNSIGNED|ZEROFILL] [NOT NULL] [DEFAULT 默认值] [DEFAULT 默认值] [[PRIMARY] KEY|UNIQUE [KEY]] [AUTO_INCREMENT])ENGINE=INNODB CHARSET=utf8 AUTO_INCREMENT=100;
+35.创建外键
+    CREATE TABLE [IF NOT EXISTS] tab_name(id int unsigned primary key auto_increment,username varchar(20) not null default &quot;市场部&quot;,pId int not null ,constraint emp_fk_dep foreign key(pId) references department(id))engine innodb charset utf8;
+    constraint:给外键起别名
+    foreign key(pId):括号中输入被约束的外键字段
+    references department(id):代表参考哪个主表的哪个字段
+36.创建外键+级联删除+修改
+    CREATE TABLE [IF NOT EXISTS] tab_name(id int unsigned primary key auto_increment,username varchar(20) not null default &quot;市场部&quot;,pId int not null ,constraint emp_fk_dep foreign key(pId) references department(id) on delete cascade ON UPDATE CASCADE)engine innodb charset utf8;
+    on delete cascade:代表删除主表(参考表)中数据的同时也会删除字表中的数据
+</code></pre>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><pre><code class="mysql">1.1064错误:代表语法错语仔细检查。
+2.Truncate和delete是有区别的,在于truncate相当于删表再重建一张同样结构的表,操作后得到一张全新表,而delete是从删除所有的层面来操作的。Truncate相当于把学籍表扔了从画一张,而delete相当于用橡皮把数据擦掉了。全删的话使用Truncate删除更快。
+3.1264错误:代表设置的值超出了此类型的范围。
+4.1267错误:排序规则不一致,就是两个表的字段排序规则不一样。
+</code></pre>
+<h2 id="insert增数据详解"><a href="#insert增数据详解" class="headerlink" title="insert增数据详解"></a>insert增数据详解</h2><pre><code class="mysql">往哪张表添加行 表名==insert into lvshihao
+添哪几列(id,name,age)==(id,name,age)
+分别添加什么值(1,&quot;吕世昊&quot;,21)==values(1,&quot;吕世昊&quot;,21);
+insert into lvshihao(id,name,age) values(1,&quot;吕世昊&quot;,21);
+1.不指定具体的字段名
+    INSERT [INTO] 表名 VALUES|VALUE(值....);
+2.列出指定字段
+    INSERT [INTO] 表名(字段名称1,...) VALUES|VALUE(值1,...);
+3.同时插入多条记录
+    INSERT [INTO] 表名[(字段名称...)] VALUES(值...),(值...)...
+4.通过SET形式插入记录
+    INSERT [INTO] 表名 SET 字段名称=值,....
+5.将查询结果插入到表中
+    INSERT [INTO] 表名[(字段名称,...)] SELECT 字段名称 FROM 表名 [WHERE 条件]
+</code></pre>
+<h2 id="update改数据详解"><a href="#update改数据详解" class="headerlink" title="update改数据详解"></a>update改数据详解</h2><pre><code class="mysql">要改哪张表 表名==update lvshihao
+要改哪几列并且改成什么值==set name=&quot;帅哥&quot;,age=22
+更改哪几行==where id=1;
+update lvshihao set name=&quot;帅哥&quot;,age=22 where id=1;
+UPDATE 表名 SET 字段名称=值,.... [WHERE 条件][ORDER BY 字段名称][LIMIT 限制条数]
+</code></pre>
+<h2 id="delete删数据详解"><a href="#delete删数据详解" class="headerlink" title="delete删数据详解"></a>delete删数据详解</h2><pre><code class="mysql">要删除的表 表名=delete form lvshihao
+删除哪几行==where id=1;
+delete from lvshihao where id=1;
+DELETE FROM 表名 [WHERE 条件][ORDER BY 字段名称][LIMIT 限制条数]
+清空表数据  truncate [TABLE] 表名;
+</code></pre>
+<h2 id="select查询数据详解"><a href="#select查询数据详解" class="headerlink" title="select查询数据详解"></a>select查询数据详解</h2><pre><code class="mysql">要查询的表 表名=select * form lvshihao
+根据什么表达式查询==where id=1;
+select * from lvshihao where id=1;
+select 表名.* from 表名
+select * from 库名.表名
+查询的基本语法
+SELECT id,sex,age,GROUP_CONCAT(username) COUNT(*) AS totalUsers,MAX(age) AS max_age,MIN(age) AS min_age,AVG(age) AS sum_age FROM cms_user WHERE id&gt;=1 GROUP BY sex HAVING COUNT(*)&gt;=2 ORDER BY age DEC LIMIT 0,2;
+</code></pre>
+<h2 id="修改表的语法"><a href="#修改表的语法" class="headerlink" title="修改表的语法"></a>修改表的语法</h2><pre><code class="mysql">一张表创建完毕,有了N列之后还有可能要增加或删除或修改列
+添加字段
+    Alter table 表名 add 列名称 列类型 列参数 
+    例如:Alter table lvshihao add name varchar(255);
+    Alter table 表名 add 列名称 列类型 列参数 after 指定列[后面]
+    例如:Alter table lvshihao add age int(10) after password;
+    Alter table 表名 add 列名称 列类型 列参数 first 添加到首位
+    例如:Alter table lvshihao add age int(10) first;
+    可以一次性添加多个如
+    Alter table lvshihao add name varchar(255),add age int;
+删除字段
+    Alter table 表名 drop 列名称
+    例如:Alter table lvshihao drop name;
+    可以一次性删除多个如
+    Alter table lvshihao drop name,drop age;
+修改字段
+    Alter table 表名 modify 列名称 新类型 新参数 [FIRST|AFTER 字段名称]（不能修改列名称）
+    例如:Alter table lvshihao modify name varchar(455);
+修改字段名称
+    Alter table 表名 change 旧列名称 新列名 新类型 新参数 [FIRST|AFTER 字段名称]
+    例如:Alter table lvshihao change name names int;
+添加默认值
+    Alter table 表名 Alter 字段名 SET DEFAULT 默认值;
+删除默认值
+    alter table 表名 alter 字段名 drop default;
+添加主键
+    alter table 表名 add [constraint [symbol]] primary key [index_type](字段名称,..);
+    alter table 表名 add primary key(id,card);
+    alter table 表名 add constraint symbol primary key index_type(id);
+删除主键
+    alter table 表名 drop primary key;
+    (注意:在删除一个字段主键的时候,如果此字段是自增长的话应该首先去掉自增长)
+    去掉自增长可以使用,下面虽然不能去掉主键,但是可以去掉主键以外的属性
+    alter table 表名 modify id int unsigned;
+添加唯一
+    alter table 表名 add [constraint [symbol]] unique [index|key] [索引名称] (字段名称,...) 
+删除唯一
+    alter table 表名 drop {index|key} 索引名称
+修改表的存储引擎
+    alter table 表名 engine=存储引擎名称
+设置自增长的值
+    alter table 表名 auto_increment=值(下次插入值,只要不指定自增字段的值,那么下次就是100)
+删除外键
+    ALTER TABLE employee drop foreign key emp_fk_dep;
+添加外键
+    ALTER TABLE employee add constraint emp_fk_dep foreign key(depId) references department(id);
+</code></pre>
+<p><strong>注意</strong></p>
+<pre><code>如果类型改变了,导致数据储蓄不了怎么办？
+如int改成smalint列 如果不匹配数据将会丢失或者在mysql的strict_mode下,修改不了。
+</code></pre><h2 id="sql语法规范"><a href="#sql语法规范" class="headerlink" title="sql语法规范"></a>sql语法规范</h2><pre><code>1.不区分大小写，但建议关键字大写,表名,列名小写
+2.每条命令最好用分号结尾
+3.每条命令根据需要,可以进行缩进或换行
+4.注释
+    单行注释: #注释文字
+    单行注释: --注释文字
+    多行注释: /*注释文字 */
+</code></pre><h2 id="sql条件查询-where关键字"><a href="#sql条件查询-where关键字" class="headerlink" title="sql条件查询-where关键字"></a>sql条件查询-where关键字</h2><pre><code>同java中的if一样，如果where后面为true,即显示出来,如果为false即不显示
+select * from lvshihao where 1;为true
+select * from lvshihao where 1&gt;2;为false
+</code></pre><h2 id="sql查询表达式详解"><a href="#sql查询表达式详解" class="headerlink" title="sql查询表达式详解"></a>sql查询表达式详解</h2><p><strong>比较运算符</strong></p>
+<pre><code class="mysql">运算符          说明
+&lt;            小于
+&lt;=            小于或等于
+=            等于
+!=或&lt;&gt;        不等于
+&gt;=            大于或等于
+&gt;            大于
+</code></pre>
+<p><strong>逻辑运算符</strong></p>
+<pre><code class="mysql">运算符              说明
+NOT或！           逻辑非
+IS NULL            逻辑是空  也可以这样&lt;=&gt; NULL
+IS NOT NULL      逻辑非空
+OR或||            逻辑或
+AND或&amp;&amp;            逻辑与
+IN                 在某集合内
+    例如:select * FROM lvshihao WHERE ID IN(46,54,55);
+NOT IN              不在某集合内
+    例如:select * FROM lvshihao WHERE ID  NOT IN(46,54,55);
+BETWEEN    AND        在某范围之内
+    例如:select * FROM lvshihao WHERE ID BETWEEN 1 AND 100;
+NOT BETWEEN    AND       不在某范围之内
+    例如:select * FROM lvshihao WHERE ID NOT BETWEEN 1 AND 100;
+</code></pre>
+<h2 id="sql模糊查询-like关键字"><a href="#sql模糊查询-like关键字" class="headerlink" title="sql模糊查询-like关键字"></a>sql模糊查询-like关键字</h2><pre><code class="MYSQL">% 通配任意个字符
+_ 通配单一字符
+select * FROM blogbbs WHERE TITLE LIKE &#39;%吕世昊%&#39;;  如:数据为&quot;我爱吕世昊的心&quot;
+select * FROM blogbbs WHERE TITLE LIKE &#39;_吕世昊_&#39;;    如:数据为&quot;爱吕世昊心&quot;
+NOT LIKE (查找关键字中没有吕世昊的数据)
+    select * FROM blogbbs WHERE TITLE NOT LIKE &#39;%吕世昊%&#39;; 
+</code></pre>
+<h2 id="sql查询模型"><a href="#sql查询模型" class="headerlink" title="sql查询模型"></a>sql查询模型</h2><pre><code>表中的字段可以看做是一个变量,也可以进行表达式,如截取,拼接等等等
+例如:select (ages-1) &gt; 50 as age form user;
+</code></pre><h2 id="sql字段起别名-as关键字"><a href="#sql字段起别名-as关键字" class="headerlink" title="sql字段起别名-as关键字"></a>sql字段起别名-as关键字</h2><pre><code class="mysql">as别名
+例如:select name,ages as age from user;
+也可以简写：select name,ages age from user;
+还可以给表起别名:select a.name,a.ages as age from user as a;
+</code></pre>
+<h2 id="sql函数详解"><a href="#sql函数详解" class="headerlink" title="sql函数详解"></a>sql函数详解</h2><pre><code class="mysql">        分类:单行函数如concat,length,ifunll等，分组函数如avg,max,min等
+分组函数
+    GROUP_CONCAT:输出组里的成员
+    select id,sex,GROUP_CONCAT(username) from lvshihao where sex is not null group by sex;
+    max：求最大
+            select max(id) from lvshihao;
+    min:求最小
+            select min(number) from lvshihao;
+    sum:求总和
+            select sum(age) from lvshihao;
+    avg:求平均
+            select avg(age) from lvshihao;
+    count:求总行数
+            select count(*)或count(1) from lvshihao;
+            效率:MYISAM储蓄引擎下,count(*)的效率高
+                INNODB储蓄引擎下,count(*)和count(1)的效率差不多,比count(字段)要高一些,因为如果是字段还得判断是否为null
+    配合DISTINCT去重使用
+            SELECT SUM(DISTINCT ID) from lvshihao 配合DISTINCT去重一起用（其余的也可以配合去重一起用）
+单行函数      
+流程控制函数
+    IF：判断 （类似if else的效果）
+           SELECT    IF(10&gt;5,&#39;大&#39;,&#39;小&#39;)
+    IFNULL:如果是空,给他赋值
+           SELECT IFNULL(HEANIMAGE,&quot;会话&quot;),ID FROM lvshihao;
+    mysql中的switch语法1
+            CASE 要判断的字段或表达式 
+                WHEN 常量1 THEN 要显示的值1或1；
+                WHEN 常量2 THEN 要显示的值2或2；
+                ELSE 要显示的值或表达式
+                END 结束
+            SELECT CASE ID WHEN 46 THEN ID * 46 WHEN 54 THEN ID * 54 ELSE ID * 2 END AS 结果 FROM lvshihao
+     mysql中的switch语法2
+              CASE
+                WHEN 字段条件 THEN 要显示的值1或1；
+                WHEN 字段条件 THEN 要显示的值2或2；
+                ELSE 要显示的值或表达式
+                END 结束
+            SELECT CASE WHEN ID=46 THEN ID * 46 WHEN ID=54 THEN ID * 54 ELSE ID * 2 END AS 结果 FROM lvshihao    
+数学函数
+    ROUND：四舍五入
+              SELECT ROUND(1.6)
+              SELECT ROUND(1.4555,2)：（第二个参数代表保留几位）
+    CEIL:向上取整
+           SELECT CEIL(1.6)：（只要有余数都进1）
+       CEIL:向下取整
+           SELECT FLOOR(1.9)：（只要有余数都去掉）
+    TRUNCATE：截断余数
+           SELECT TRUNCATE(1.9555555,1)：（第二个参数截取余数的位数）
+    MOD：取余数       
+              SELECT MOD(10,3):相当于10%3
+日期函数   
+    NOW：返回当前系统日期+时间
+           SELECT NOW()
+    CURDATE：返回当前系统日期
+               SELECT CURDATE()
+    CURTIME：返回当前系统时间
+               SELECT CURTIME()
+       获取指定的部分,年,月,日,小时,分钟,秒
+           SELECT    YEAR(NOW()),MONTH(NOW()),MONTHNAME(NOW())
+           YEAR:年          MONTH：月  MONTHNAME：几月的英文名称，其余的就直接输入英文名称就有对应的函数
+           day:日         hour:小时        minute:分钟    second:秒
+       STR_TO_DATE:将日期格式的字符串转换成指定格式的日期
+          SELECT    STR_TO_DATE(&#39;9-13-2018&#39;,&#39;%m-%d-%Y&#39;)  2018-09-13
+      DATE_FORMAT:将日期转成字符串
+          SELECT    DATE_FORMAT(&#39;2018/6/6&#39;,&#39;%Y年%m月%d日&#39;)  2018年06月06日
+      DATEDIFF:计算两个时间相差的天
+          SELECT DATEDIFF(CURDATE(),&quot;2017-10-1&quot; )
+字符函数
+    LENGTH:返回字段的长度
+            SELECT LENGTH(CONTENT) FROM lvshihao
+    CONCAT:拼接(如下将ID和CONTENT拼接在一起)
+            SELECT CONCAT(ID,CONTENT) FROM lvshihao
+    UPPER:字符串小写转大写        
+            SELECT UPPER(&quot;lvshihao&quot;) 
+    LOWER:字符串大写转小写            
+            SELECT LOWER(&quot;LVSHIHAO&quot;)
+    SUBSTR:截取字符串(包括当前下标)
+            SELECT SUBSTR(&quot;我爱吕世昊&quot;,3,5)：截取指定长度
+            SELECT SUBSTR(&quot;我爱吕世昊&quot;,3):截取下标后面的所有字符
+    INSTR:返回查询字符串中的启始索引下标
+            SELECT INSTR(&quot;我爱吕世昊&quot;,&#39;吕&#39;)
+    TRIM：清空字符串前后字母
+            SELECT TRIM(&#39;    吕世昊    &#39;)：(默认清除空格)
+            SELECT TRIM(&#39;A&#39; FROM &#39;AAAAAAAAA吕世昊AAA&#39;)：(指定清除A)
+    LPAD:用指定的字符左填充指定长度        
+            SELECT LPAD(&quot;吕世昊&quot;,10,&quot;*&quot;)：（意思是说&#39;吕世昊&#39;这个字符串不满足10长度,自动会让&#39;*&#39;填充）
+    RPAD:用指定的字符右填充指定长度    
+            SELECT RPAD(&quot;吕世昊&quot;,10,&quot;*&quot;)：（意思是说&#39;吕世昊&#39;这个字符串不满足10长度,自动会让&#39;*&#39;填充）
+    REPLACE：替换字符
+            SELECT REPLACE(&#39;吕世昊爱你&#39;,&#39;你&#39;,&#39;张玉&#39;)（意思是说&#39;吕世昊爱你&#39;这个字符中的&#39;你&#39;,替换为&#39;张玉&#39;）
+其他函数
+    RAND():随机数(一般用于随机排序)
+        SELECT * FROM 表名 ORDER BY RAND();
+    VERSION:查看当前mysql的版本号    
+        SELECT    VERSION()
+    DATABASE：显示当前数据库的名称
+        SELECT    DATABASE()
+    USER:显示当前的用户
+        SELECT    USER()
+    MD5:将字符串进行md5加密
+        SELECT MD5(&quot;密文&quot;)
+    PASSWORD:将字符串加密
+        SELECT PASSWORD(&#39;密文&#39;)
+</code></pre>
+<pre><code class="mysql">日期格式
+格式符            功能
+%Y            四位的年份
+%y            2位的年份
+%m            月份(01,02,03,...,11,12)
+%c            月份(1,2,..,11,12)
+%d            日(01,02,...)
+%H            小时(24小时制)
+%h            小时(12小时制)
+%i            分钟(00,01,...,59)
+%s            秒(00,01,...,59)
+</code></pre>
+<h2 id="sql分组与过滤结果集"><a href="#sql分组与过滤结果集" class="headerlink" title="sql分组与过滤结果集"></a>sql分组与过滤结果集</h2><pre><code class="mysql">分组GROUP BY
+    SELECT * from blogbbs GROUP BY LABEL;
+按照多个字段分组
+    SELECT * FROM blogbbs GROUP BY LABEL,NAME;
+WITH ROLLUP 分组之后再次统计
+    select COUNT(*),sum(username),avg(username),sex from cms_user where sex is not nul
+l group by sex WITH ROLLUP;
+HAVING 过滤结果集(通过HAVING子句对分组结果进行二次筛选)
+    SELECT * from blogbbs GROUP BY LABEL HAVING ID&gt;50;
+</code></pre>
+<h2 id="sql排序-order关键字"><a href="#sql排序-order关键字" class="headerlink" title="sql排序-order关键字"></a>sql排序-order关键字</h2><pre><code class="mysql">随机排序
+    SELECT * FROM 表名 ORDER BY RAND();
+从小到大（ASC）默认
+    例如:SELECT TIME FROM lvshihao ORDER BY TIME ASC;
+从大到小（DESC）
+    例如:SELECT TIME FROM lvshihao ORDER BY TIME DESC;
+order by 子句中可以支持单个字段,多个字段,表达式,函数,别名
+order by 一般放在查询语句的最后面，limit除外
+</code></pre>
+<h2 id="sql字段去重"><a href="#sql字段去重" class="headerlink" title="sql字段去重"></a>sql字段去重</h2><pre><code class="mysql">去重DISTINCT
+    SELECT DISTINCT LABEL from lvshihao
+注意去重和分组显示的数据不同,去重只查询出来去重的字段,而分组却可以显示全部字段
+</code></pre>
+<h2 id="sql分页-limit关键字"><a href="#sql分页-limit关键字" class="headerlink" title="sql分页-limit关键字"></a>sql分页-limit关键字</h2><pre><code class="mysql">SELECT * from lvshihao limit 1,10;
+</code></pre>
+<h2 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h2><pre><code class="mysql">SELECT username FROM employee UNION SELECT username FROM cms_user;
+SELECT username FROM employee UNION ALL SELECT username FROM cms_user;
+UNION和UNION ALL 区别是UNION去掉相同记录,UNION ALL是简单的合并到一起
+</code></pre>
+<h2 id="连接查询-笛卡尔集"><a href="#连接查询-笛卡尔集" class="headerlink" title="连接查询-笛卡尔集"></a>连接查询-笛卡尔集</h2><pre><code class="mysql">select gieName,boyName from beauty,boys
+笛卡尔集的错误情况
+select count(*) from beauty 假设输出12行
+select count(*) from boys 假设输出4行
+最终结果:12*4=48行
+发生原因:没有有效的连接条件
+如何避免:添加有效的连接条件
+</code></pre>
+<h2 id="连接查询的分类"><a href="#连接查询的分类" class="headerlink" title="连接查询的分类"></a>连接查询的分类</h2><pre><code>sql92支持（内连接）
+sql99支持所有连接
+内连接：等值连接，非等值连接,自连接
+外连接：左外连接，右外连接,全外连接
+交叉连接
+</code></pre><h3 id="等值连接"><a href="#等值连接" class="headerlink" title="等值连接"></a>等值连接</h3><pre><code class="mysql">select gieName,boyName from beauty,boys WHERE beauty.id=boys.userid (sql92语法)
+select gieName,boyName from beauty INNER JOIN boys ON beauty.id=boys.userid (sql99语法)
+意思为:第一个表中的id如果等于第二个表中的userid的话就返回结果
+1.多表等值连接的结果为多表的交集部分
+2.n表示连接,至少需要n-1个连接条件
+3.多表的顺序没有要求
+4.一般需要为表起别名
+</code></pre>
+<h3 id="非等值连接"><a href="#非等值连接" class="headerlink" title="非等值连接"></a>非等值连接</h3><pre><code class="mysql">select * from beauty,boys WHERE beauty.money BETWEEN boys.moeny AND boys.moneys;  (sql92语法)
+select * from beauty INNER JOIN boys ON beauty.money BETWEEN boys.moeny AND boys.moneys; (sql99语法)
+意思为:非等值连接就是不是直接等于而是进行判断返回来的结果
+</code></pre>
+<h3 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h3><pre><code class="mysql">SELECT b.PREVIEW,b.COMMENT,m.PREVIEW,m.COMMENT FROM blogbbs b,blogbbs m WHERE  b.PREVIEW=m.COMMENT       (sql92语法)
+SELECT b.PREVIEW,b.COMMENT,m.PREVIEW,m.COMMENT FROM blogbbs b INNER JOIN blogbbs m ON b.PREVIEW=m.COMMENT  
+意思为:把一张表看做很多张表进行查询,相当于对自己查询2遍
+</code></pre>
+<h2 id="外连接介绍"><a href="#外连接介绍" class="headerlink" title="外连接介绍"></a>外连接介绍</h2><pre><code>外连接的查询结果为主表中的所有记录,如果从表中没有和他匹配的,则显示匹配的值,如果从表中没有和他匹配的,则显示null,外连接查询结果=内连接查询结果+主表中有而从表中没有的记录
+左外连接,left join左边的世主表
+右外连接,right join右边的是主表
+</code></pre><h3 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h3><pre><code class="mysql">select * from beauty LEFT OUTER JOIN boys ON beauty.money=boys.moent; (sql99语法)
+</code></pre>
+<h3 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h3><pre><code class="mysql">select * from beauty RIGHT OUTER JOIN boys ON beauty.money=boys.moent; (sql99语法)
+</code></pre>
+<h3 id="全外连接"><a href="#全外连接" class="headerlink" title="全外连接"></a>全外连接</h3><pre><code class="mysql">select * from beauty FULL OUTER JOIN boys ON beauty.money=boys.moent; (sql99语法)
+</code></pre>
+<h3 id="交叉连接"><a href="#交叉连接" class="headerlink" title="交叉连接"></a>交叉连接</h3><pre><code class="mysql">select * from beauty CROSS JOIN boys; (sql99语法)
+</code></pre>
+<h2 id="子查询的分类"><a href="#子查询的分类" class="headerlink" title="子查询的分类"></a>子查询的分类</h2><pre><code class="mysql">分类
+    按子查询出现的位置:
+        select后面:
+            仅仅支持标量子查询
+        form后面:
+            支持表子查询
+        where或having后面:
+            标量子查询
+            列子查询
+            行子查询
+        exists后面(相关子查询)
+            表子查询
+    按结果集的行数不同:
+        标量子查询(结果集只有一行一个)
+        列子查询(结果集只有一列多行)
+        行子查询(结果集有一行多列)
+        表子查询(结果集一般为多行多列)
+    结果集就是括号里面的sql返回的结果集
+</code></pre>
+<h3 id="标量子查询（where后面）"><a href="#标量子查询（where后面）" class="headerlink" title="标量子查询（where后面）"></a>标量子查询（where后面）</h3><pre><code class="mysql">(结果集只有一行一个)
+SELECT * FROM love WHERE name=(SELECT NAME FROM mm_doc WHERE id=130)
+</code></pre>
+<h3 id="列子查询（where后面）"><a href="#列子查询（where后面）" class="headerlink" title="列子查询（where后面）"></a>列子查询（where后面）</h3><pre><code class="mysql">(结果集只有一列多行)
+                        使用多行比较符作符
+                    操作符                含义
+                    IN/NOT IN         等于列表中的任意一个
+                    ANY|SOME        和子查询返回的某一个值比较
+                    ALL                和子查询返回的所有值比较
+SELECT * FROM love WHERE name in(SELECT NAME FROM mm_doc WHERE id IN(130,131))
+</code></pre>
+<h3 id="行子查询（where后面）"><a href="#行子查询（where后面）" class="headerlink" title="行子查询（where后面）"></a>行子查询（where后面）</h3><pre><code class="mysql">SELECT * FROM love WHERE (id,name)=(SELECT MAX(id),&#39;开具&#39; AS name FROM love)
+//将多个字段对应
+</code></pre>
+<h3 id="标量子查询-select后面"><a href="#标量子查询-select后面" class="headerlink" title="标量子查询(select后面)"></a>标量子查询(select后面)</h3><pre><code class="mysql">SELECT love.*,(SELECT COUNT(*) FROM love) FROM love
+</code></pre>
+<h3 id="表子查询-form后面"><a href="#表子查询-form后面" class="headerlink" title="表子查询(form后面)"></a>表子查询(form后面)</h3><pre><code class="mysql">SELECT * FROM (SELECT * FROM mm_doc WHERE ID=130) as mm_doc WHERE NAME=&quot;纯乐扣乐扣&quot;
+一定要给表起别名
+</code></pre>
+<h3 id="相关子查询-exists后面"><a href="#相关子查询-exists后面" class="headerlink" title="相关子查询(exists后面)"></a>相关子查询(exists后面)</h3><pre><code class="mysql">SELECT EXISTS(SELECT * FROM mm_doc)
+EXISTS：是一个boolean类型如果反回1则代表有数据,如果反回0则代表没有数据
+如果EXISTS为真那么外层语句将会被执行,如果为假那么将不会执行外层语句
+select username from employee where exists(select * from department where id=1)//如果子句查出来的有结果(也就是为真)那么才会执行外层语句,否则就不会执行
+NOT EXISTS和上面正好相反,如果为假那么就会执行
+</code></pre>
+<h2 id="正则表达式查询"><a href="#正则表达式查询" class="headerlink" title="正则表达式查询"></a>正则表达式查询</h2><pre><code>1.REGEXP‘匹配方式’
+</code></pre><table>
+<thead>
+<tr>
+<th>^</th>
+<th>匹配字符开始的部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$</td>
+<td>匹配字符结尾的部分</td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表字符串中的任意一个字符,包括回车和换行</td>
+</tr>
+<tr>
+<td>[字符集合]</td>
+<td>匹配字符集合中的任何一个字符</td>
+</tr>
+<tr>
+<td>[^字符集合]</td>
+<td>匹配除了字符集合以外的任何一个字符</td>
+</tr>
+<tr>
+<td>S1\</td>
+<td>S2\</td>
+<td>$3</td>
+<td>匹配S1.S2.S3中的任意一个字符串</td>
+</tr>
+<tr>
+<td>*</td>
+<td>代表0个1个或者多个其前的字符</td>
+</tr>
+<tr>
+<td>+</td>
+<td>代表1个或者多个其前的字符</td>
+</tr>
+<tr>
+<td>String{N}</td>
+<td>字符串出现N次</td>
+</tr>
+<tr>
+<td>字符串{M,N}</td>
+<td>字符串至少出现M次,最多N次</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="mysql">SELECT * FROM lvshihao WHERE username REGEXP &quot;^Q...&quot;;
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhifubao.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/weixin.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2018/12/12/mysql笔记(二)/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                mysql笔(二)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI",
+        appKey: "BX5svNjhIIaheIbwruaqawzg",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="lvshihao.top" class="profile gravatar"><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg" itemprop="image" alt="吕世昊" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="lvshihao.top" itemprop="url" rel="author">吕世昊</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>始于兴趣,忠于编程</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 吕世昊<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+	<div id="binft"></div>
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">这是 <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">吕世昊的个人博客</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Lvshihao</a>&<a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Tianjingjing</a>, Powered by lvshihao, Hosted by Coding Pages</a>
+        </span>
+		
+      </p>
+	   <p style="font-family: 'Ubuntu', sans-serif;">
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+	   </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    var binft = function (r) {
+
+      function t() {
+
+        return b[Math.floor(Math.random() * b.length)]
+
+      }
+
+      function e() {
+
+        return String.fromCharCode(94 * Math.random() + 33)
+
+      }
+
+      function n(r) {
+
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+
+          var l = document.createElement("span");
+
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+
+        }
+
+        return n
+
+      }
+
+      function i() {
+
+        var t = o[c.skillI];
+
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+
+      }
+
+      var l = "",
+
+      o = ["青青陵上柏，磊磊涧中石。", "人生天地间，忽如远行客。","斗酒相娱乐，聊厚不为薄。", "驱车策驽马，游戏宛与洛。","洛中何郁郁，冠带自相索。","长衢罗夹巷，王侯多第宅。","两宫遥相望，双阙百余尺。","极宴娱心意，戚戚何所迫？"].map(function (r) {
+
+      return r + ""
+
+      }),
+
+      a = 2,
+
+      g = 1,
+
+      s = 5,
+
+      d = 75,
+
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+
+      c = {
+
+        text: "",
+
+        prefixP: -s,
+
+        skillI: 0,
+
+        skillP: 0,
+
+        direction: "forward",
+
+        delay: a,
+
+        step: g
+
+      };
+
+      i()
+
+      };
+
+      binft(document.getElementById('binft'));
+
+  </script>
+
+
+
+
+<script>
+
+  var now = new Date();
+
+  function createtime() {
+
+    var grt= new Date("12/08/2020 19:41:00");//此处修改你的建站时间或者网站上线时间
+
+    now.setTime(now.getTime()+250);
+
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+
+  }
+
+  setInterval("createtime()",250);</script>
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Mr.LVSHIHAO</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/202252197" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5914005183?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=202252197&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  类别
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+</html>
