@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-12-09T06:16:54.218Z</updated>
+  <updated>2020-12-09T11:21:05.047Z</updated>
   <id>/</id>
   
   <author>
@@ -17,15 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mysql笔(一)</title>
-    <link href="/2018/12/12/mysql%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
-    <id>/2018/12/12/mysql笔记(一)/</id>
+    <title>Linux笔记</title>
+    <link href="/2018/12/12/Linux/"/>
+    <id>/2018/12/12/Linux/</id>
     <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2020-12-09T06:16:54.218Z</updated>
+    <updated>2020-12-09T11:21:05.047Z</updated>
     
     <summary type="html">
     
-      记录mysql里面的增,删,改,查,创建表,函数,排序,分页,各种连接等知识点,从入门到精通的第一篇mysql文章
+      记录Linux的基本命令知识点的整理,从Linux入门到精通
+    
+    </summary>
+    
+      <category term="笔记" scheme="/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="linux" scheme="/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql笔记(二)</title>
+    <link href="/2018/12/12/mysql%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
+    <id>/2018/12/12/mysql笔记(二)/</id>
+    <published>2018-12-12T14:16:01.000Z</published>
+    <updated>2020-12-09T11:18:48.597Z</updated>
+    
+    <summary type="html">
+    
+      记录mysql里面的索引,变量,存储过程,函数,视图,触发器,表锁,事务,慢查询知识点的整理,从入门到精通的第二篇mysql文章
     
     </summary>
     
@@ -37,15 +57,15 @@
   </entry>
   
   <entry>
-    <title>mysql笔(二)</title>
-    <link href="/2018/12/12/mysql%E7%AC%94%E8%AE%B0(%E4%BA%8C)/"/>
-    <id>/2018/12/12/mysql笔记(二)/</id>
+    <title>mysql笔记(一)</title>
+    <link href="/2018/12/12/mysql%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
+    <id>/2018/12/12/mysql笔记(一)/</id>
     <published>2018-12-12T14:16:01.000Z</published>
-    <updated>2020-12-09T06:07:32.115Z</updated>
+    <updated>2020-12-09T11:18:57.338Z</updated>
     
     <summary type="html">
     
-      记录mysql里面的索引,变量,存储过程,函数,视图,触发器,表锁,事务,慢查询知识点的整理,从入门到精通的第二篇mysql文章
+      记录mysql里面的增,删,改,查,创建表,函数,排序,分页,各种连接等知识点,从入门到精通的第一篇mysql文章
     
     </summary>
     
