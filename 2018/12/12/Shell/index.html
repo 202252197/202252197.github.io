@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Shell笔记 | 吕世昊的博客</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Mr.LVSHIHAO";
+  mashiro_option.author_name = "LVSHIHAO";
+  mashiro_option.site_url = "https://lvshihao.top";
+  mashiro_option.v_appId = "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI";
+  mashiro_option.v_appKey = "BX5svNjhIIaheIbwruaqawzg";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(3).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(4).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(5).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(6).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(7).jpg.webp,https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="https://lvshihao.top">
+          <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>海底月是天上月,眼前人是心上人。向来心是看客心,奈何人是剧中人。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/202252197" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://weibo.com/5914005183?is_all=1" target="_blank" class="social-github" title="sina">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/sina.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://music.163.com/#/user/home?id=513260629" target="_blank" class="social-github" title="wangyiyun">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wangyiyun.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/lu-shi-hao-75" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhihu.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:202252197@qq.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/email.svg">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/Screenshot_20201205_111803.jpg">
+                  </div>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/Screenshot_20201205_111803.jpg">
+                  </div>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Mr.</span>
+            <span class="shironeko">LVSHIHAO</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          类别
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/bangumi/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          番组
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2650507688,695948966&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2650507688,695948966&amp;fm=26&amp;gp=0.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Shell笔记</h1>
+      <p class="entry-census">
+        <span>
+          <a href="lvshihao.top">
+            <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="lvshihao.top">吕世昊</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2018-12-12<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+      <!-- 开始添加字数统计-->
+        
+          	<div style="margin-top:10px;">
+	    <span class="post-time">
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-keyboard-o"></i>
+	        <span class="post-meta-item-text">  字数统计: </span>
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+	        <span class="post-count">4.4k字</span>
+	      </span>
+	    </span>
+	
+	    <span class="post-time">
+	      &nbsp; | &nbsp;
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-hourglass-half"></i>
+	        <span class="post-meta-item-text">  阅读时长: </span>
+	        <span class="post-count">19分</span>
+	      </span>
+	    </span>
+	</div>
+
+        
+        <!-- 添加完成 -->
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="1-Shell概述"><a href="#1-Shell概述" class="headerlink" title="1.Shell概述"></a>1.Shell概述</h2><p>​    <strong>大数据程序员为什么要学习shell呢？</strong></p>
+<p>​        1）需要看懂运维人员编写的shell程序</p>
+<p>​        2）偶然编写一些简单的shell程序来管理集群，提高效率开发</p>
+<p>​    shell是一个命令解释器,他接受应用程序/用户命令，然后操作系统内核</p>
+<p>​    shell还是一个功能强大的编写语言,容易编写，容易调试，灵活性强</p>
+<h2 id="2-Shell解析器"><a href="#2-Shell解析器" class="headerlink" title="2.Shell解析器"></a>2.Shell解析器</h2><p>1)Liunx提供的Shell解析器有：</p>
+<pre><code>cat /etc/shells
+</code></pre><p>2)Centos默认的解析器是bash</p>
+<pre><code>echo $SHELL
+</code></pre><h2 id="3-Shell脚本入门"><a href="#3-Shell脚本入门" class="headerlink" title="3.Shell脚本入门"></a>3.Shell脚本入门</h2><p><strong>1.脚本格式</strong></p>
+<p>脚本以#!/bin/bash开头(指定解析器)</p>
+<p><strong>2.第一个Shell脚本:helloworld</strong></p>
+<p>(1)需求:创建一个shell脚本,输出helloworld</p>
+<p>(2)案例实操：</p>
+<pre><code>touch hellowrld.sh创建一个sh文件
+vi hellowrld.sh编辑sh文件
+在hellowrld.sh中输入如下内容
+#!/bin/bash
+echo &quot;lvshihao hellowrld&quot;
+</code></pre><p>(3)脚本的常用执行方式</p>
+<p>第一种:采用bash或sh+脚本的相对路径或绝对路径(不用赋予脚本+x权限)</p>
+<p>sh+脚本的相对路径</p>
+<pre><code>sh hellowrld.sh
+输出 lvshihao hellowrld
+</code></pre><p>sh+脚本的绝对路径</p>
+<pre><code>sh /lib/lvshihao/lvshihao.sh
+输出 lvshihao hellowrld
+</code></pre><p>bash+脚本的相对路径</p>
+<pre><code>bash hellowrld.sh
+输出 lvshihao hellowrld
+</code></pre><p>bash+脚本的绝对路径</p>
+<pre><code>bash /lib/lvshihao/lvshihao.sh
+输出 lvshihao hellowrld
+</code></pre><p>第二种：采用输入脚本的绝对路径或相对路径执行脚本(必须具有可执行权限+x)</p>
+<p>(a)首先要赋予lvshihao.sh脚本的+x权限</p>
+<pre><code>chmod 777 lvshihao.sh
+</code></pre><p>(b)执行脚本</p>
+<p>相对路径</p>
+<pre><code>./lvshihao.sh 
+输出 lvshihao hellowrld
+</code></pre><p>绝对路径</p>
+<pre><code>/lib/lvshihao/lvshihao.sh
+</code></pre><p><strong>3.第二个shell脚本:多命令处理</strong></p>
+<p>(1)需求:</p>
+<p>在/home/atguigu/目录下创建一个lvshihao.txt,在lvshihao.txt文件中增加”I love cls”</p>
+<p>(2)实例操作</p>
+<p>创建一个lvshihao.sh文件，文件中写入以下代码</p>
+<pre><code>#!/bin/bash
+
+cd /home/atguigu  进入这个目录下
+touch lvshihao.txt  创建lvshihao.txt文件
+echo &quot;I love lvshihao&quot; &gt;&gt; lvshihao.txt  给lvshihao.txt文件添加&quot;I love lvshihao&quot;文字
+</code></pre><h2 id="4-Shell中的变量"><a href="#4-Shell中的变量" class="headerlink" title="4.Shell中的变量"></a>4.Shell中的变量</h2><h3 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h3><p>​    <strong>1.常用系统变量</strong></p>
+<p>​    $HOME  ，  $PWD，$SHELL ，$ USER</p>
+<p>​    <strong>2.案例实操</strong></p>
+<p>​        (1)查看系统变量的值</p>
+<pre><code>[root@localhost usr]# echo $USER
+root
+[root@localhost usr]# echo $PWD
+/usr
+[root@localhost usr]# echo $HOME
+/root
+[root@localhost usr]# echo $SHELL
+/bin/bash
+</code></pre><p>​        (2)显示当前Shell中所有变量:set</p>
+<pre><code>[root@localhost usr]# set
+BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:expand_aliases:extquote:force_fignore:hostcomplete:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+BASH_ALIASES=()
+BASH_ARGC=()
+</code></pre><h3 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h3><p>​    <strong>1.基本语法</strong></p>
+<p>​        (1)定义变量:变量=值  (注意等号两边没有空格)</p>
+<pre><code>[root@localhost usr]# A=lvshiaho
+[root@localhost usr]# echo lvshihao
+lvshihao
+</code></pre><p>​        (2)撤销变量:unset 变量 (也就是清除了这个变量)</p>
+<pre><code>[root@localhost usr]# unset A
+[root@localhost usr]# echo $A
+
+</code></pre><p>​        (3)声明静态变量:readonly变量,注意:不能unset</p>
+<pre><code>[root@localhost usr]# readonly B=lvshiaho
+[root@localhost usr]# echo $B
+lvshiaho
+</code></pre><p>只有在虚拟机重启的时候才会清除这个变量</p>
+<p>​        (4)将变量提升为全局变量,可供其他Shell程序使用(意思就是你写的shell脚本是不能用这些变量的,必须得是全局变量)</p>
+<pre><code>//提升全局变量之前
+[root@localhost usr]# ./lvshihao.sh 
+
+//提升全局变量之后
+[root@localhost usr]# export A
+[root@localhost usr]# ./lvshihao.sh 
+lvshihao
+</code></pre><p>​        <strong>2.变量定义规则</strong></p>
+<p>​            (1)变量名称可以由字母.数字和下划线组成,但是不能以数字开头,环境变量名建议大写。</p>
+<p>​            (2)在bash中，变量默认类型都是字符串类型,无法直接进行数值运算。</p>
+<p>​            (3)变量的值如果有空格,需要使用双引号或单引号括起来。</p>
+<h3 id="特殊变量-n"><a href="#特殊变量-n" class="headerlink" title="特殊变量:$n"></a>特殊变量:$n</h3><p><strong>1.基本语法</strong></p>
+<pre><code>$n(功能描述:n为数字,$0代表该脚本的名称,$1-$9代表第一到第九个参数,十以上的参数,十以上的参数需要用大括号包含,如${10})
+</code></pre><p><strong>2.案例实操</strong></p>
+<p>(1)输出该脚本文件的名称,输入参数1和输入参数2的值</p>
+<pre><code>#!/bin/bash
+
+echo &quot;$0 $1 $2 $3&quot;
+</code></pre><p>执行的结果（第一个为文件名 【1,2,3】为参数）</p>
+<pre><code>[root@localhost usr]# ./lvshihao.sh  1 2 3
+./lvshihao.sh 1 2 3
+</code></pre><h3 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量:$"></a>特殊变量:$</h3><p><strong>1.基本语法</strong></p>
+<pre><code>$#(功能描述:获取所有输入参数个数,常用于循环)
+</code></pre><p><strong>2.案例实操</strong></p>
+<p>(1)获取输入参数的个数</p>
+<pre><code>#!/bin/bash
+
+echo $#
+</code></pre><p>执行结果（输出了5,说明传进去5个参数）</p>
+<pre><code>[root@localhost usr]# ./lvshihao.sh 1 2 3 4 5
+5
+</code></pre><h3 id="特殊变量-1"><a href="#特殊变量-1" class="headerlink" title="特殊变量:$*"></a>特殊变量:$*</h3><p><strong>1.基本语法</strong></p>
+<pre><code>$*(功能描述:这个变量代表命令行中所有的参数,$*把所有的参数看成一个整体)
+</code></pre><p><strong>2.案例实操</strong></p>
+<pre><code>#!/bin/bash
+
+echo $*
+</code></pre><p>执行结果</p>
+<pre><code>[root@localhost usr]# ./lvshihao.sh 1 2 3
+1 2 3
+</code></pre><h3 id="特殊变量-2"><a href="#特殊变量-2" class="headerlink" title="特殊变量:$@"></a><strong>特殊变量:$@</strong></h3><p><strong>1.基本语法</strong></p>
+<pre><code>$@(功能描述:这个变量代表命令行中所有的参数，不过$@把每个参数区分对待)
+</code></pre><p><strong>2.案例实操</strong></p>
+<pre><code>#!/bin/bash
+
+echo $@
+</code></pre><p>执行结果</p>
+<pre><code>[root@localhost usr]# ./lvshihao.sh 1 2 3
+1 2 3
+</code></pre><h3 id="特殊变量-3"><a href="#特殊变量-3" class="headerlink" title="特殊变量:$?"></a>特殊变量:$?</h3><p><strong>1.基本用法</strong></p>
+<pre><code>$?（功能描述:最后一次执行的命令返回状态,如果这个变量的值为0,证明上一个命令正确执行:如果这个变量的值非0(具体是哪个数,由命令自己决定),则证明上一个命令执行不正确了.）
+</code></pre><p><strong>2.实例操作</strong></p>
+<pre><code>#!/bin/bash
+
+echo $？
+</code></pre><p>执行结果</p>
+<pre><code>[root@localhost usr]# ./lvshihao.sh
+0
+</code></pre><h2 id="5-运算符"><a href="#5-运算符" class="headerlink" title="5.运算符"></a>5.运算符</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a><strong>基本语法</strong></h3><pre><code>(1)“$((运算式))”或“$[运算式]”
+(2)expr  +，-，\*,/,%  加,减,乘,除,取余
+</code></pre><p>注意:expr运算符之间要有空格</p>
+<h3 id="案例实操"><a href="#案例实操" class="headerlink" title="案例实操"></a><strong>案例实操</strong></h3><p>(1)计算3+2的值</p>
+<pre><code>#!/bin/bash
+
+expr 3 + 2
+</code></pre><p>(2)计算(2+3)X4值</p>
+<p>（a）expr一步完成计算</p>
+<pre><code>#!/bin/bash
+
+expr `expr 3 + 2` \* 4
+</code></pre><p>（b）采用$[运算式]方式</p>
+<pre><code>[root@localhost lvshihao]# a=$[(2+3)*4]
+[root@localhost lvshihao]# echo $a
+20
+</code></pre><h2 id="6-条件判断"><a href="#6-条件判断" class="headerlink" title="6.条件判断"></a>6.条件判断</h2><h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code>[ condition ]（注意conition前后要有空格）
+</code></pre><p>注意:条件非空即为true,[ atguigu ]返回true，[ ]返回false</p>
+<h3 id="常用判断条件"><a href="#常用判断条件" class="headerlink" title="常用判断条件"></a>常用判断条件</h3><p>(1)两个整数之间比较</p>
+<pre><code>=字符串比较 -lt小于(less than)  -le小于等于(less equal)  -eq等于(equal)  -gt大于(greater than)
+-ge大于等于(greater equal) -ne不等于(Not equal)
+</code></pre><p>(2)按照文件权限进行判断</p>
+<pre><code>-r有读的权限(read) -w有写的权限(write) -x有执行的权限(execute)
+</code></pre><p>(3)按照文件类型进行判断</p>
+<pre><code>-f文件存在并且是一个常规的文件(file) -d文件存在并是一个目录(directory) -e文件存在(existence)
+</code></pre><h3 id="实例操作"><a href="#实例操作" class="headerlink" title="实例操作"></a>实例操作</h3><p>(1)23是否大于等于22</p>
+<pre><code>[root@localhost lvshihao]# [ 23 -ge 22 ]
+[root@localhost lvshihao]# echo $?
+0
+[root@localhost lvshihao]# [ 23 -eq 22 ]
+[root@localhost lvshihao]# echo $?
+1
+由此可见执行完成条件判断是不反回结果的,可以通过echo $?来查看上一个命令是否正确,来判断是否成功
+</code></pre><p>(2)判断lvshihao.sh文件是否有写权限</p>
+<pre><code>[root@localhost lvshihao]# [ -w lvshihao.sh ]
+[root@localhost lvshihao]# echo $?
+0
+</code></pre><p>(3)/home/atguigu/cls.txt目录中文件是否存在</p>
+<pre><code>[root@localhost lvshihao]# [ -e /home/atguigu/cls.txt ]
+[root@localhost lvshihao]# echo $?
+1
+由此可见文件不存在
+</code></pre><p>(4)多条件判断(&amp;&amp;表示前一条命令执行成功时,才执行后一条命令,|| 表示上一条命令执行失败后,才执行下一条命令)</p>
+<pre><code>[root@localhost lvshihao]# [ condition ] &amp;&amp; echo ok || echo notok
+ok
+[root@localhost lvshihao]# [ condition ] &amp;&amp; [  ] || echo notok 
+notok
+</code></pre><h2 id="7-流程控制-重点"><a href="#7-流程控制-重点" class="headerlink" title="7.流程控制(重点)"></a>7.流程控制(重点)</h2><h3 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a><strong>if判断</strong></h3><p><strong>基本语法</strong></p>
+<pre><code>if[ 条件判断式 ];then
+    程序
+fi
+或者
+if[ 条件判断式 ]
+ then
+    程序
+fi
+注意事项:
+(1)[ 条件判断式 ],中括号和条件判断式之间必须有空格
+(2)if后要有空格
+</code></pre><p><strong>实例操作</strong></p>
+<p>(1)输入一个数字,如果是1,则输出lvshihao,如果是2,则输出521,如果是其他,什么也不出输出</p>
+<pre><code>#!/bin/bash
+
+if [ $1 -eq 1 ]
+then
+        echo &quot;lvshihao&quot;
+elif [ $1 -eq 2 ]
+then
+        echo &quot;521&quot;
+fi
+
+</code></pre><h3 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a><strong>case语句</strong></h3><p><strong>基本语法</strong></p>
+<pre><code>case $变量名 in
+   &quot;值1&quot;)
+           如果变量的值等于1,则执行的程序1
+      ;;
+   &quot;值2&quot;)
+           如果变量的值等于2,则执行的程序2
+      ;;
+      ...节省其他分支...
+      *）
+      如果变量的值都不是以上的值,则执行此程序
+      ;;
+ esac 
+ 注意事项:
+ 1) case行尾必须为单词 “in”,每一个模式匹配必须以右括号“)”技术。
+ 2）双引号“;;”表示命令序列结束,相当于java中的break
+ 3）最后的“*)” 表示默认模式,相当于java中的default
+ 4）esac代表结束
+</code></pre><p><strong>实例操作</strong></p>
+<p>输入一个数字,如果是1,则输出lvshihao,如果是2,则输出521,如果是其他,输出123</p>
+<pre><code>case $2 in
+1)
+        echo &quot;lvshihao&quot;
+;;
+2)
+        echo &quot;521&quot;
+;;
+*)
+        echo &quot;123&quot;
+;;
+esac
+</code></pre><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p><strong>基本语法1</strong></p>
+<pre><code>for((初始值;循环控制条件;变量变化))
+    do
+        循环
+    done
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)从1加到100</p>
+<pre><code>#!/bin/bash
+
+s=0
+for((i=1;i&lt;=100;i++))
+do
+        s=$[$s+$i]
+done
+
+echo $s
+</code></pre><p><strong>基本语法2</strong></p>
+<pre><code>for 变量 in 值1 值2 值3...
+    do
+        程序
+    done
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)打印所有输入参数</p>
+<p>$*执行</p>
+<pre><code>#!/bin/bash
+
+for i in &quot;$*&quot;
+do
+        echo &quot;lvshihao love $i&quot;
+done
+</code></pre><p>$@执行</p>
+<pre><code>#!/bin/bash
+
+for i in &quot;$@&quot;
+do
+        echo &quot;lvshihao love $i&quot;
+done
+</code></pre><pre><code>效果是不一样的如果都是字符串的话$*代表把所有参数当做一个整体,$@则是区分对待.
+</code></pre><h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p><strong>基本语法</strong></p>
+<pre><code>while [ 条件判断 ]
+    do
+        程序
+    done
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)从1到100</p>
+<pre><code>#!/bin/bash
+
+s=0
+i=1
+while [ $i -le 100 ]
+do
+        s=$[$s + $i]
+        i=$[$i + 1]
+done
+
+echo $s
+</code></pre><h2 id="8-read读取控制台输入"><a href="#8-read读取控制台输入" class="headerlink" title="8.read读取控制台输入"></a>8.read读取控制台输入</h2><h3 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a><strong>基本语法</strong></h3><pre><code>read(选项)(参数)
+选项
+
+    -p: 指定读取值时的提示符:
+
+    -t: 指定读取值时等待的时间(秒)
+
+参数
+
+    变量: 指定读取值的变量名
+</code></pre><h3 id="案例实操-1"><a href="#案例实操-1" class="headerlink" title="案例实操"></a><strong>案例实操</strong></h3><p>(1)提示7秒内,读取控制台输入的名称</p>
+<pre><code>!/bin/bash
+
+read -t 7 -p &quot;lvshihao in 7 seconds &quot; NAME
+echo $NAME
+</code></pre><h2 id="9-函数"><a href="#9-函数" class="headerlink" title="9.函数"></a>9.函数</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p><strong>1.basename基本语法</strong></p>
+<pre><code>basename[pathname] [suffix] (功能描述:basename命令会删掉所有的前缀包括最后一个(&#39;/&#39;)字符,然后将字符串显示出来啊)
+选项:
+subffix为后缀,如果suffix被指定了,basename会将pathname或string中的subffix去掉
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)截取该/usr/lvshihao/lvshihao.sh路径的文件名称</p>
+<pre><code>[root@localhost lvshihao]# basename /usr/lvshihao/lvshihao.sh
+lvshihao.sh
+[root@localhost lvshihao]# basename /usr/lvshihao/lvshihao.sh .sh
+lvshihao
+</code></pre><p><strong>2.dirname基本语法</strong></p>
+<pre><code>dirname文件绝对路径（功能描述:从给定的绝对路径的文件中去除文件名(非目录部分),然后返回剩下的路径(目录的部分)）
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)获取/usr/lvshihao/lvshihao.sh文件的路径</p>
+<pre><code>[root@localhost lvshihao]# dirname /usr/lvshihao/lvshihao.sh
+/usr/lvshihao
+</code></pre><h3 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h3><p><strong>基本语法</strong></p>
+<pre><code>[ function ] funname[()]{
+    Action
+    [return int;]
+}
+funname
+</code></pre><p><strong>经验技巧</strong></p>
+<pre><code>(1)必须在调用函数地方之前,先声明函数,shell脚本是先运行,不会像其他语言一样先编译。
+(2)函数返回值,只能通过$?系统变量获得,可以显示加:retun返回,如果不加,将以最后一条命令运行结果,作为返回值。return后跟数值n(0-255)
+</code></pre><p><strong>案例实操</strong></p>
+<p>(1)计算两个输入参数的和</p>
+<pre><code>#!/bin/bash
+
+function lvshihao()
+{
+        s=0;
+        s=$[$1+$2]
+        echo $s
+}
+
+read -p &quot;input your paratemer1:&quot; P1
+read -p &quot;input your paratemer2:&quot; P2
+
+lvshihao $P1 $P2
+</code></pre><h2 id="10-Shell工具"><a href="#10-Shell工具" class="headerlink" title="10.Shell工具"></a>10.Shell工具</h2><h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><pre><code>cut的工作就是&quot;剪&quot;,具体的就是在文件中负责剪切数据用的,cut命令从文件的每一行剪切字节,字符和字段并将这些字节,字符和字段输出。
+</code></pre><p><strong>基本用法</strong></p>
+<pre><code>cut [选项参数] filename
+说明:默认分隔符是制表符
+</code></pre><p><strong>选项参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>列号,提取第几列</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>分隔符,按照指定分隔符分割列</td>
+</tr>
+</tbody>
+</table>
+<p><strong>案例实操</strong></p>
+<p>(0)数据准备</p>
+<pre><code>[root@localhost lvshihao]# touch cut.txt
+[root@localhost lvshihao]# vi cut.txt 
+lvshihao lv
+lvshihao shi
+aini ai
+sini si
+</code></pre><p>(1)切割cut.txt第一列</p>
+<pre><code>[root@localhost lvshihao]# cut -d &quot; &quot; -f 1 cut.txt
+lvshihao
+lvshihao
+aini
+sini
+</code></pre><p>(2)切割cut.txt第二,第三列</p>
+<pre><code>[root@localhost lvshihao]# cut -d &quot; &quot; -f 2,3 cut.txt
+lv
+shi
+ai
+si
+</code></pre><p>(3)在 cut.txt文件中切割出lvshihao</p>
+<pre><code>[root@localhost lvshihao]# cat cut.txt | grep &quot;lvshihao&quot; | cut -d &quot; &quot; -f 1 
+lvshihao
+lvshihao
+</code></pre><p>(4)选取系统PATH变量值,第2个”: “ 开始后的所有路径:</p>
+<pre><code>[root@localhost lvshihao]# echo $PATH | cut -d : -f 3-
+/sbin:/opt/rh/rh-ruby23/root/usr/local/bin:/opt/rh/rh-ruby23/root/usr/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+</code></pre><p>(5)切割ifconfig后打印的IP地址</p>
+<pre><code>[root@localhost lvshihao]# ifconfig eth0 | grep &quot;inet addr&quot; | cut -d : -f 2 | cut -d &quot; &quot; -f 1
+192.168.159.128
+</code></pre><h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><pre><code>sed是一种流编译器,它一次处理一行内容。处理时,把当前处理的行储蓄在临时缓冲区中,称为&quot;模式空间&quot;,接着用sed命令处理缓冲区中的内容,处理完成后,把缓冲区的内容送往屏幕。接着处理下一行,这样不断重复,直到文件末尾。文件内容并没有改变,除非你使用重定向储蓄输出。
+</code></pre><p><strong>基本用法</strong></p>
+<pre><code>sed [选项参数] ‘command’ filename
+</code></pre><p><strong>选项参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-e</td>
+<td>直接在指令列模式上进行sed的动作编辑。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>命令功能描述</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>新增,a的后面可以接字符串,在下一行出现</td>
+</tr>
+<tr>
+<td>d</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>s</td>
+<td>查找并替换</td>
+</tr>
+</tbody>
+</table>
+<p><strong>案例实操</strong></p>
+<p>(0)数据准备</p>
+<pre><code>[root@localhost usr]# touch sed.txt
+[root@localhost usr]# vi sed.txt 
+ong shen
+guan zhen
+wo wo
+lai lai
+
+le le
+</code></pre><p>(1)将”mei nv”这个单词插入到sed.txt第二行下,打印。</p>
+<pre><code>[root@localhost usr]# sed &#39;2a mei nv&#39; sed.txt
+dong shen
+guan zhen
+mei nv
+wo wo
+lai lai
+
+le le
+</code></pre><p>注意：文件并没有改变</p>
+<p>(2)删除sed.txt文件所有包含wo的行</p>
+<pre><code>[root@localhost usr]# sed &quot;/wo/d&quot; sed.txt 
+dong shen
+guan zhen
+lai lai
+
+le le
+</code></pre><p>(3)将sed.txt文件中wo替换为ni</p>
+<pre><code>[root@localhost usr]# sed &quot;s/wo/ni/g&quot; sed.txt 
+dong shen
+guan zhen
+ni ni
+lai lai
+
+le le
+</code></pre><p>注意:’g’表示global,全部替换</p>
+<p>(4)将sed.txt文件中的第二行删除并将wo替换为ni</p>
+<pre><code>[root@localhost usr]# sed -e &#39;2d&#39; -e &#39;s/wo/ni/g&#39; sed.txt
+dong shen
+ni ni
+lai lai
+
+le le
+</code></pre><h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><pre><code>一个强大的文本分析工具,把文件逐行的读入,以空格为默认分隔符将每行切片,切开的部分再进行分析处理。
+</code></pre><p><strong>基本用法</strong></p>
+<pre><code>awk[选项参数]  “pattern1{action1}  pattern2{action2}....”  filename 
+pattern: 表示AWK在数据中查找的内容,就是匹配模式
+action:在找到匹配内容时所执行的一系列命令
+</code></pre><p><strong>选项参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-F</td>
+<td>指定输入文件分隔符</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>赋值一个用户定义变量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>案例实操</strong></p>
+<p>(0)数据准备</p>
+<pre><code>[root@localhost usr]# sudo cp /etc/passwd ./
+</code></pre><p>(1)搜索passwd文件以root关键字开头的所有行,并输出该行的第7列。</p>
+<pre><code>[root@localhost usr]# awk -F : &#39;/^root/{print $7}&#39; passwd
+/bin/bash
+</code></pre><p>(2)搜索passwd文件以root关键字开头的所以行,并输出该行第1列和第7列,中间以”,”号分割。</p>
+<pre><code>[root@localhost usr]# awk -F : &#39;/^root/{print $1&quot;,&quot;$7}&#39; passwd
+root,/bin/bash
+</code></pre><p>注意:只有匹配了pattern的行才会执行action</p>
+<p>(3)只显示/etc/passwd的第一列和第七列,以逗号分割,且在所有行前面添加列名user,shell在最后一行添加”dahaige, /binzuishuai”。</p>
+<pre><code>[root@localhost usr]# awk -F : &#39;BEGIN{print &quot;user,shell&quot;} {print $1&quot;,&quot;$7} END{print &quot;dahaige, bin/zuishuai&quot;} &#39; passwd
+</code></pre><p>注意:BEGIN在所有数据取行之前执行;END在所有数据执行之后执行。</p>
+<p>(4)将passwd文件中的用户id增加数值1并输出</p>
+<pre><code>awk -F : -v i=1 &#39;{print $3+i}&#39; passwd
+
+</code></pre><p><strong>awk的内置变量</strong></p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FILENAME</td>
+<td>文件名</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已读的记录数</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>浏览记录的域的个数(切割后,列的个数)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>案例实操</strong></p>
+<p>(1)统计passwd文件名,每行的行号,每行的列数</p>
+<pre><code>[root@localhost usr]# awk -F : &#39;{print &quot;filename:&quot; FILENAME &quot;, linenumber:&quot; NR &quot;,columns:&quot; NF}&#39; passwd
+</code></pre><p>(2)切割ip</p>
+<pre><code>[root@localhost usr]# ifconfig eth0| grep &quot;inet addr&quot; |awk -F : &#39;{print $2}&#39; |awk -F &quot; &quot; &#39;{print $1}&#39;
+192.168.159.128
+</code></pre><p>(3)查找sed.txt中空行所在行号</p>
+<pre><code>[root@localhost usr]# awk &#39;/^$/{print NR}&#39; sed.txt
+5
+</code></pre><h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><pre><code>sort命令是在Linux里非常有用,他将文件进行排序,并将排序结果标准输出。
+</code></pre><p><strong>基本语法</strong></p>
+<pre><code>sort(选项)(参数)
+</code></pre><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>依照数值的大小排序</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>以相反的顺序来排序</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>设置排序时所用的分隔字符。</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>指定需要排序的列</td>
+</tr>
+</tbody>
+</table>
+<p>参数：指定待排序的文件列表</p>
+<p><strong>案例实操</strong></p>
+<p>(0)数据准备</p>
+<pre><code>[root@localhost usr]# touch sort.sh
+[root@localhost usr]# vi sort.sh 
+bb:40:5.4
+bd:20:4.2
+xz:50:2.3
+cls:10:3.5
+ss:30:1.6
+</code></pre><p>(1)按照”: “分割后的第三列倒序排序</p>
+<pre><code>[root@localhost usr]# sort -t : -nrk 3 sort.sh
+bb:40:5.4
+bd:20:4.2
+cls:10:3.5
+xz:50:2.3
+ss:30:1.6
+</code></pre><h2 id="11-企业真实面试题"><a href="#11-企业真实面试题" class="headerlink" title="11.企业真实面试题"></a>11.企业真实面试题</h2><h3 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h3><p>问题1：使用Linux命令查询file1中空行所在的行号</p>
+<pre><code>答案：
+[root@localhost usr]# awk &#39;/^$/{print NR}&#39; sed.txt
+5
+</code></pre><p>问题2：有文件chengji.txt内容如下:</p>
+<pre><code>张三 40
+李四 50
+王五 60
+</code></pre><p>使用Linux命令计算第二列的和并输出</p>
+<pre><code>[root@localhost usr]# cat chengji.txt | awk -F &quot; &quot; &#39;{sum+=$2} END{print sum}&#39;
+150
+</code></pre><h3 id="搜狐-amp-和讯网"><a href="#搜狐-amp-和讯网" class="headerlink" title="搜狐&amp;和讯网"></a><strong>搜狐&amp;和讯网</strong></h3><p>问题1：Shell脚本里如何检查一个文件是否存在?如果不存在该如何处理?</p>
+<pre><code>#!/bin/bash
+
+if [ -f file.txt ]; then
+    echo &quot;文件存在!&quot;
+else
+    echo &quot;文件不存在!&quot;
+fi
+</code></pre><h3 id="新浪"><a href="#新浪" class="headerlink" title="新浪"></a><strong>新浪</strong></h3><p>问题1：用shell写一个脚本,对文本中无序的一列数字排序</p>
+<pre><code>[root@localhost usr]# cat test.txt
+6
+5
+4
+3
+2
+1
+7
+[root@localhost usr]# sort -n test.txt|awk &#39;{a+=$0;print $0} END{print &quot;SUM=&quot;a}&#39;
+1
+2
+3
+4
+5
+6
+7
+SUM=28
+</code></pre><h3 id="金和网络"><a href="#金和网络" class="headerlink" title="金和网络"></a><strong>金和网络</strong></h3><p>问题1：请用shell脚本写出查找当前文件夹(/home)下所有的文本文件内容中包含有字符”shen”的文件名称</p>
+<pre><code>[root@localhost usr]# grep -r &quot;shen&quot; /home |cut -d &quot;:&quot; -f 1
+/home/atguigu/atas/sed.txt
+/home/atguigu/atas/cut.txt
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhifubao.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/weixin.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+		
+
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2018/12/12/Linux/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1315857571,2395764180&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1315857571,2395764180&fm=26&gp=0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Linux笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI",
+        appKey: "BX5svNjhIIaheIbwruaqawzg",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="lvshihao.top" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg" itemprop="image" alt="吕世昊" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="lvshihao.top" itemprop="url" rel="author">吕世昊</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>始于兴趣,忠于编程</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 吕世昊<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2020</p>
+    </div>
+    <div class="footer-device">
+	<div id="binft"></div>
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">这是 <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">吕世昊的个人博客</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Lvshihao</a>&<a href="https://lvshihao.top/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Tianjingjing</a>, Powered by lvshihao, Hosted by Coding Pages</a>
+        </span>
+		
+      </p>
+	   <p style="font-family: 'Ubuntu', sans-serif;">
+		<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+	   </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    var binft = function (r) {
+
+      function t() {
+
+        return b[Math.floor(Math.random() * b.length)]
+
+      }
+
+      function e() {
+
+        return String.fromCharCode(94 * Math.random() + 33)
+
+      }
+
+      function n(r) {
+
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+
+          var l = document.createElement("span");
+
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+
+        }
+
+        return n
+
+      }
+
+      function i() {
+
+        var t = o[c.skillI];
+
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+
+      }
+
+      var l = "",
+
+      o = ["青青陵上柏，磊磊涧中石。", "人生天地间，忽如远行客。","斗酒相娱乐，聊厚不为薄。", "驱车策驽马，游戏宛与洛。","洛中何郁郁，冠带自相索。","长衢罗夹巷，王侯多第宅。","两宫遥相望，双阙百余尺。","极宴娱心意，戚戚何所迫？"].map(function (r) {
+
+      return r + ""
+
+      }),
+
+      a = 2,
+
+      g = 1,
+
+      s = 5,
+
+      d = 75,
+
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+
+      c = {
+
+        text: "",
+
+        prefixP: -s,
+
+        skillI: 0,
+
+        skillP: 0,
+
+        direction: "forward",
+
+        delay: a,
+
+        step: g
+
+      };
+
+      i()
+
+      };
+
+      binft(document.getElementById('binft'));
+
+  </script>
+
+
+
+
+<script>
+
+  var now = new Date();
+
+  function createtime() {
+
+    var grt= new Date("12/08/2020 19:41:00");//此处修改你的建站时间或者网站上线时间
+
+    now.setTime(now.getTime()+250);
+
+    days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+
+    hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+
+    if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+
+    mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+
+    seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+
+    snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+
+    document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+
+    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+
+  }
+
+  setInterval("createtime()",250);</script>
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="./js/Valine.min.js"></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Mr.LVSHIHAO</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/202252197" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://weibo.com/5914005183?is_all=1" class="fa fa-weibo" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=202252197&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  类别
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/bangumi/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  番组
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/xuehua.js"></script>
+</html>

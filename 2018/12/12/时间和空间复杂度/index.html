@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">categories | 吕世昊的博客</title>
+  <title itemprop="name">时间复杂度和空间复杂度 | 吕世昊的博客</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -346,278 +346,182 @@
   </div>
 </header>
 
-      <header class="site-header no-select gizle sabit" role="banner">
-  <div class="site-top">
-    <div class="site-branding">
-      <span class="site-title">
-        <span class="logolink moe-mashiro">
-          <a href="/">
-            <span class="sakurasono">Mr.</span>
-            <span class="shironeko">LVSHIHAO</span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1607660061687&amp;di=fa8782a6d21ffded61979b22c241923c&amp;imgtype=0&amp;src=http%3A%2F%2Fp0.qhimgs4.com%2Ft0184171efbe767dfb2.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1607660061687&amp;di=fa8782a6d21ffded61979b22c241923c&amp;imgtype=0&amp;src=http%3A%2F%2Fp0.qhimgs4.com%2Ft0184171efbe767dfb2.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      时间复杂度和空间复杂度</h1>
+      <p class="entry-census">
+        <span>
+          <a href="lvshihao.top">
+            <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
           </a>
         </span>
-      </span>
-    </div>
-    <div class="searchbox search-form-submit">
-      <i class="iconfont js-toggle-search iconsearch icon-search">
-      </i>
-    </div>
-    <div id="show-nav" class="showNav mobile-fit">
-      <div class="line line1">
-      </div>
-      <div class="line line2">
-      </div>
-      <div class="line line3">
-      </div>
-    </div>
-    <div class="lower-cantiner">
-      <div class="lower">
-        <nav class="mobile-fit-control hide">
-          <ul id="menu-new" class="menu">
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-                    首页
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-                    归档
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/tags/">
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          标签
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/">
-                          <i class="fa fa-code" aria-hidden="true"></i>
-                          类别
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="javascript:;">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-                    清单
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/bangumi/">
-                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
-                          番组
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/music/">
-                          <i class="fa fa-headphones" aria-hidden="true"></i>
-                          歌单
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/links/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-                    友人帐
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/donate/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-                    赞赏
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-                    关于
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我？
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="/client/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
-                    客户端
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/atom.xml">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
-                    RSS
-                  </span>
-                </a>
-                
-              </li>
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
+        <span>
+          <a href="lvshihao.top">吕世昊</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2018-12-12<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+      <!-- 开始添加字数统计-->
+        
+          	<div style="margin-top:10px;">
+	    <span class="post-time">
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-keyboard-o"></i>
+	        <span class="post-meta-item-text">  字数统计: </span>
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+	        <span class="post-count">626字</span>
+	      </span>
+	    </span>
+	
+	    <span class="post-time">
+	      &nbsp; | &nbsp;
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-hourglass-half"></i>
+	        <span class="post-meta-item-text">  阅读时长: </span>
+	        <span class="post-count">2分</span>
+	      </span>
+	    </span>
+	</div>
+
+        
+        <!-- 添加完成 -->
+    </header>
   </div>
-</header>
 
-<main class="content">
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="时间复杂度On和空间复杂度O1是什么意思？"><a href="#时间复杂度On和空间复杂度O1是什么意思？" class="headerlink" title="时间复杂度On和空间复杂度O1是什么意思？"></a>时间复杂度On和空间复杂度O1是什么意思？</h1><p><strong>(1)把输入规模看成x轴，所花时间/空间看成y轴</strong></p>
+<pre><code>O（n）就是y=x，y随x的增长而线性增长。也就是成正比，一条斜线。
+O（1）就是y=1，是一个常量，不管x怎么变，y不变，一条与x轴平行的线。
+</code></pre><p><strong>(2)举个简单的例子，要从0加到n，我们会这么写：</strong></p>
+<pre><code class="java">int sum = 0;
+for(int i = 0;i&lt;=n;++i) {
+    sum + = i; 
+}
+</code></pre>
+<pre><code>一共算了n次加法，那么就说这个时间复杂度是O（n）。当然O（n）的精确的概念是，是n的最高次方，比如，某个计算共计算了3n+2次，那么这个时间复杂度也是O（n），因为3n+2中的最高次方是n。
+</code></pre><p><strong>如果代码这么写：</strong></p>
+<pre><code class="java">int sum = 0;
+for(int i = 0;i&lt;= n;i++) {
+        for(int j = 0;j&lt;= n;j++) {
+               sum + = (i + j);        
+          }
+}
+</code></pre>
+<pre><code>很明显一共算了n^2次加法，那么就说这个时间复杂度是O（n^2），和这个上面的类似，如果某个算法计算了3*n^2+n+1次，其时间复杂度仍然是O（n^2），因为3*n^2+n+1中的最高的次方是n^2，所谓O1就是计算的次数是常量。
+</code></pre><p><strong>我们还以上面从0到n的例子来说，如果我们用等差数列的公式，那么，代码可以这么写：</strong></p>
+<pre><code class="java">int sum = n*(n+1)/2
+</code></pre>
+<pre><code>不管n有多大（当然不能溢出了），通过上面的公式只需要计算一次，也就是说计算的次数是不变的，这种情况的时间复杂度就可以说成O(1)，再比如这个计算，不管其他条件如何变化，均只计算5次就能计算出结果，那么这种情况就是时间复杂度，也就是O(1)
+</code></pre><p><strong>(3)常见的复杂度</strong></p>
+<pre><code>要在hash表中找到一个元素就是O（1）
+要在无序数组中找到一个元素就是O（n）
+访问数组的第n个元素是O（1）
+访问链表的第n个元素是O（n）
+也就是说：
+如果实现中没有循环就是O（1）
+如果实现中有一个循环就是O（n）
+</code></pre><p><strong>(4)算法复杂度：算法复杂度分为时间时间复杂度和空间复杂度。其作用是：时间复杂度是度量算法执行时间的长短；而空间复杂度是指算法所需存储空间的大小。</strong></p>
 
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/笔记/" title="笔记: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">笔记
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/算法/" title="算法: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
         </div>
-    </div>
-</div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhifubao.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/weixin.png"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+		
 
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre full previous">
+          
+            <a href="/2018/12/12/mysql笔记(二)/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2495164343,1369797041&fm=26&gp=0.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                mysql笔记(二)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+      </section>
+      
+<div id="vcomments"></div>
 
-    
-    <style type="texts">
-    #category-radar {
-        margin-top: 50px;
-        width: 100%;
-        height: 360px;
-    }
-</style>
-
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"笔记","max":5},{"name":"算法","max":5}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [4,1],
-                    name : '文章分类数量'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI",
+        appKey: "BX5svNjhIIaheIbwruaqawzg",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
 </script>
 
-    
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="lvshihao.top" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg" itemprop="image" alt="吕世昊" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="lvshihao.top" itemprop="url" rel="author">吕世昊</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>始于兴趣,忠于编程</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
 
-</main>
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
