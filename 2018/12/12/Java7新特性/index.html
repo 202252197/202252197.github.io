@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">theme-sakura | 吕世昊的博客</title>
+  <title itemprop="name">Java7新特性 | 吕世昊的博客</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -346,60 +346,231 @@
   </div>
 </header>
 
-        <div class="pattern-center-blank"></div>
-  
-    <div class="pattern-center ">
-      <div class="pattern-attachment-img">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.2heng.xin/wp-content/uploads//2018/05/sakura2.jpeg" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-      </div>
-      <header class="pattern-header ">
-        <h1 class="entry-title">
-        吕世昊博客 🌸</h1>
-      </header>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2060752205,1806211811&amp;fm=26&amp;gp=0.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2060752205,1806211811&amp;fm=26&amp;gp=0.jpg">
     </div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      
-      <!-- .entry-content -->
-      
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhifubao.jpg"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/weixin.png"></li>
-            </ul>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Java7新特性</h1>
+      <p class="entry-census">
+        <span>
+          <a href="lvshihao.top">
+            <img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="lvshihao.top">吕世昊</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2018-12-12<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+      <!-- 开始添加字数统计-->
+        
+          	<div style="margin-top:10px;">
+	    <span class="post-time">
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-keyboard-o"></i>
+	        <span class="post-meta-item-text">  字数统计: </span>
+	        <!-- 安装插件npm install hexo-wordcount --save -->
+	        <span class="post-count">640字</span>
+	      </span>
+	    </span>
+	
+	    <span class="post-time">
+	      &nbsp; | &nbsp;
+	      <span class="post-meta-item-icon">
+	        <i class="fa fa-hourglass-half"></i>
+	        <span class="post-meta-item-text">  阅读时长: </span>
+	        <span class="post-count">2分</span>
+	      </span>
+	    </span>
+	</div>
+
+        
+        <!-- 添加完成 -->
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h3 id="二进制字面量"><a href="#二进制字面量" class="headerlink" title="二进制字面量"></a><strong>二进制字面量</strong></h3><pre><code>jdk7开始,终于可以用二进制来表示整数(byte,short,int和long)。
+使用二进制字面量的好处是,可以使代码更容易被理解。语法非常简单,
+只要在二进制数值前面加0b或0B
+举例：int x=0B110110;
+</code></pre><h3 id="数字字面量可以出现下划线"><a href="#数字字面量可以出现下划线" class="headerlink" title="数字字面量可以出现下划线"></a><strong>数字字面量可以出现下划线</strong></h3><pre><code>为了增强对数值的阅读性,如我们经常把数据用逗号分隔一样，JK7提供了_对数值分隔。
+举例:int x=1_000;
+注意事件:
+    不能出现在进制标识和数值之间
+    不能出现在数值开头和结尾
+    不能出现在小数点旁边
+</code></pre><h3 id="swithc语句可以用字符串"><a href="#swithc语句可以用字符串" class="headerlink" title="swithc语句可以用字符串"></a>swithc语句可以用字符串</h3><pre><code>     String value=&quot;吕世昊&quot;;
+        switch (value) {
+        case &quot;吕世昊&quot;:
+            System.out.println(&quot;嗯嗯他是人才&quot;);
+            break;
+        default:
+            System.out.println(&quot;嗯嗯他是不人才&quot;);
+            break;
+        }
+</code></pre><h3 id="泛型简化"><a href="#泛型简化" class="headerlink" title="泛型简化"></a>泛型简化</h3><pre><code>//后面的泛型类型可以不需要写,这叫泛型推断,也可以叫菱形泛型
+ArrayList&lt;String&gt; arrayList=new ArrayList&lt;&gt;();
+</code></pre><h3 id="异常的多个catch合并"><a href="#异常的多个catch合并" class="headerlink" title="异常的多个catch合并"></a>异常的多个catch合并</h3><pre><code class="java">Java 7之前的版本：
+如果用一个catch块处理多个异常，可以用管道符（|）将它们分开，在这种情况下异常参数变量（ex）是定义为final的，所以不能被修改。这一特性将生成更少的字节码并减少代码冗余。
+Java 7之前的版本：
+catch (IOException ex) {
+     logger.error(ex);
+     throw new MyException(ex.getMessage());
+catch (SQLException ex) {
+     logger.error(ex);
+     throw new MyException(ex.getMessage());
+}catch (Exception ex) {
+     logger.error(ex);
+     throw new MyException(ex.getMessage());
+}
+在Java 7中，我们可以用一个catch块捕获所有这些异常：
+catch(IOException | SQLException | Exception ex){
+     logger.error(ex);
+     throw new MyException(ex.getMessage());
+}
+</code></pre>
+<h3 id="try-with-resources语句"><a href="#try-with-resources语句" class="headerlink" title="try-with-resources语句"></a>try-with-resources语句</h3><pre><code class="java">格式:try(必须是java.lang.AutoCloseable的子类对象){...}
+好处：
+    资源自动释放,不需要close()了
+    把需要关闭资源的部分都定义在这里就ok了
+    主要是沉体系的对象是这个接口的子类(看JDK7的API)
+
+/**
+* 个性签名：今天的努力只要对得起自己就满足了
+* 创建人：吕世昊  
+* 创建时间：2019年3月22日 下午1:48:41   
+* @version
+ */
+public class Test3 implements AutoCloseable{
+    public static void main(String[] args)  {
+        //1.7之后，只要实现了AutoCloseable接口
+        try(Test3 test=new Test3()){
+            System.out.println(&quot;--执行main方法--&quot;);
+            System.out.println(1/0);
+        }catch (Exception e) {
+            System.out.println(&quot;--exception--&quot;);
+        }
+        System.out.println(&quot;-------------------&quot;);
+        //JDK1.7之前,释放资源方式
+        try {
+            System.out.println(&quot;--执行main方法--&quot;);
+            System.out.println(1/0);
+        } catch (Exception e) {
+            System.out.println(&quot;--exception--&quot;);
+        }finally {
+            System.out.println(&quot;--close--&quot;);
+        }
+    }
+
+    @Override
+    public void close() throws Exception {
+        // TODO Auto-generated method stub
+        System.out.println(&quot;close&quot;);
+    }
+}
+
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/zhifubao.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/weixin.png"></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-      <footer class="post-footer">
-        <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-        <div class="post-tags">
-        </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer><!-- .entry-footer -->
-    </article>
+		
+
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
       <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2018/12/12/Linux/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1315857571,2395764180&fm=26&gp=0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1315857571,2395764180&fm=26&gp=0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                Linux笔记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "ydI4xvunh2SW6ChbIR7SUPRh-MdYXbMMI",
+        appKey: "BX5svNjhIIaheIbwruaqawzg",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="/about/" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg" itemprop="image" alt="LVSHIHAO" height="70" width="70"></a>
+          <a href="lvshihao.top" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/202252197/Blogger@master/static_files/lvshihao/img/heandimhg.jpg" itemprop="image" alt="吕世昊" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="https://lvshihao.top" itemprop="url" rel="author">LVSHIHAO</a>
+            <a href="lvshihao.top" itemprop="url" rel="author">吕世昊</a>
             </h3>
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i>海底月是天上月,眼前人是心上人。向来心是看客心,奈何人是剧中人。</p>
+        <p><i class="iconfont icon-write"></i>始于兴趣,忠于编程</p>
       </section>
+    </main><!-- #main -->
   </div><!-- #primary -->
 </div>
+
+
+
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
